@@ -1,8 +1,4 @@
-pragma solidity ^0.5.8;
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20.sol";
-import "openzeppelin-solidity/contracts/token/ERC20/ERC20Detailed.sol";
-import "openzeppelin-solidity/contracts/ownership/Ownable.sol";
-import "openzeppelin-solidity/contracts/math/SafeMath.sol";
+pragma solidity ^0.5.11;
 import "./BlockBerry.sol";
 contract CPUGT is BlockBerry {
     constructor(string memory description, string memory symbol, uint256 cap) //initialize the contract
