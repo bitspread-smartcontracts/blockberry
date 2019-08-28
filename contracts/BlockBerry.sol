@@ -11,9 +11,7 @@ contract BlockBerry is ERC20, ERC20Detailed, Ownable {
     uint256 private _cap;
 
     constructor(string memory description, string memory symbol, uint256 cap) //initialize the contract
-    ERC20() //ERC20 functions
     ERC20Detailed(description, symbol, 18) //description symbol decimals
-    Ownable() //initialize owner modifier and owner funcs
     public {
         _cap = cap;
     }
