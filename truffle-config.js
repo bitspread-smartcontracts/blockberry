@@ -63,6 +63,12 @@ module.exports = {
 			gas: 3000000,
 			gasPrice: 10000000000
 		},
+		live: {
+			provider: () => new HDWalletProvider(process.env.MNEMONIC, "https://mainnet.infura.io/v3/" + process.env.INFURA_API_KEY),
+			network_id: 1,
+			gas: 3000000,
+			gasPrice: 10000000000
+		}
 		// Another network with more advanced options...
 		// advanced: {
 		// port: 8777,             // Custom port

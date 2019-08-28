@@ -1,4 +1,4 @@
-pragma solidity ^0.5.11;
+pragma solidity 0.5.11;
 import "./BlockBerry.sol";
 contract CPUST is BlockBerry {
     constructor(string memory description, string memory symbol, uint256 cap) //initialize the contract

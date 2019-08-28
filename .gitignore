@@ -1,3 +1,9 @@
+#test cov
+coverage.json
+#build
+build/
+#private .vscode  settings
+.vscode/
 #private .ssh key for github
 .ssh/
 # Logs
