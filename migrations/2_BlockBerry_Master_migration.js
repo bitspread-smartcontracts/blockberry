@@ -5,6 +5,6 @@ module.exports = async function (deployer, network, accounts) {
 		BLB,
 		"BlockBerry BLB Token",
 		"BLB",
-		web3.utils.toWei("1000000", "ether")
+		web3.utils.toWei("100000000", "ether")
 	);
 };
