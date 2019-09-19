@@ -9,10 +9,10 @@ contract("BlockBerry BLB Trial Test", async accounts => {
 		let supply = await bb.totalSupply();
 		assert.equal(web3.utils.fromWei(supply, "ether"), 0);
 	});
-	it("initial cap is 1 million", async () => {
+	it("initial cap is 100 million", async () => {
 		let bb = await BLB.deployed();
 		let cap = await bb.cap();
-		assert.equal(web3.utils.fromWei(cap, "ether"), 1000000);
+		assert.equal(web3.utils.fromWei(cap, "ether"), 100000000);
 	});
 	it("initial owner is jordan", async () => {
 		let bb = await BLB.deployed();
@@ -25,14 +25,14 @@ contract("BlockBerry BLB Trial Test", async accounts => {
 		let owner = await bb.owner();
 		assert.equal(owner, ritika);
 	});
-	it("ritika mints 1 million", async () => {
+	it("ritika mints 100 million", async () => {
 		let bb = await BLB.deployed();
-		await bb.mint(web3.utils.toWei("1000000", "ether"), { from: ritika });
+		await bb.mint(web3.utils.toWei("100000000", "ether"), { from: ritika });
 	});
-	it("new supply is 1 million", async () => {
+	it("new supply is 100 million", async () => {
 		let bb = await BLB.deployed();
 		let supply = await bb.totalSupply();
-		assert.equal(web3.utils.fromWei(supply, "ether"), 1000000);
+		assert.equal(web3.utils.fromWei(supply, "ether"), 100000000);
 	});
 	it("ritika cannot mint an additional 1 million because cap has been reached", async () => {
 		try {
@@ -43,14 +43,14 @@ contract("BlockBerry BLB Trial Test", async accounts => {
 			assert(e.toString().includes("Cap exceeded"));
 		}
 	});
-	it("ritika burns 0.5 million", async () => {
+	it("ritika burns 50 million", async () => {
 		let bb = await BLB.deployed();
-		await bb.burn(web3.utils.toWei("500000", "ether"), { from: ritika });
+		await bb.burn(web3.utils.toWei("50000000", "ether"), { from: ritika });
 	});
-	it("new supply is 0.5 million", async () => {
+	it("new supply is 50 million", async () => {
 		let bb = await BLB.deployed();
 		let supply = await bb.totalSupply();
-		assert.equal(web3.utils.fromWei(supply, "ether"), 500000);
+		assert.equal(web3.utils.fromWei(supply, "ether"), 50000000);
 	});
 	it("jordan cannot mint any coins because he is no longer the owner", async () => {
 		try {
@@ -61,28 +61,28 @@ contract("BlockBerry BLB Trial Test", async accounts => {
 			assert(e.toString().includes("caller is not the owner"));
 		}
 	});
-	it("ritika tries to transfer 10 million to cedric which will fail as ritika only has 0.5 million", async () => {
+	it("ritika tries to transfer 100 million to cedric which will fail as ritika only has 50 million", async () => {
 		try {
 		let bb = await BLB.deployed();
-		let transfer = await bb.transfer(cedric, web3.utils.toWei("10000000", "ether"), { from: ritika })
+		let transfer = await bb.transfer(cedric, web3.utils.toWei("100000000", "ether"), { from: ritika })
 		assert(false);
 		} catch (e) {
 			assert(e.toString().includes("overflow"));
 		}
 	});
-	it("ritika transfers 0.1 million to cedric", async () => {
+	it("ritika transfers 10 million to cedric", async () => {
 		let bb = await BLB.deployed();
-		let transfer = await bb.transfer(cedric, web3.utils.toWei("100000", "ether"), { from: ritika })
+		let transfer = await bb.transfer(cedric, web3.utils.toWei("10000000", "ether"), { from: ritika })
 		assert(transfer);
 	});
-	it("ritika approves 0.1 million to jordan", async () => {
+	it("ritika approves 10 million to jordan", async () => {
 		let bb = await BLB.deployed();
-		let approval = await bb.approve(jordan, web3.utils.toWei("100000", "ether"), { from: ritika })
+		let approval = await bb.approve(jordan, web3.utils.toWei("10000000", "ether"), { from: ritika })
 		assert(approval);
 	});
-	it("after approval, jordan transfers 0.1 million from ritika's account to his own account", async () => {
+	it("after approval, jordan transfers 10 million from ritika's account to his own account", async () => {
 		let bb = await BLB.deployed();
-		let transfer = await bb.transferFrom(ritika, jordan, web3.utils.toWei("100000", "ether"), { from: jordan })
+		let transfer = await bb.transferFrom(ritika, jordan, web3.utils.toWei("10000000", "ether"), { from: jordan })
 		assert(transfer);
 	});
 	it("ritika calls increaseAllowance of 0.3 million to cedric", async () => {
@@ -161,10 +161,10 @@ contract("BlockBerry BLB Trial Test", async accounts => {
 			assert(e.toString().includes("Account is frozen"));
 		}
 	});
-	it("total supply does not change with freezing an account and remains at 0.5 million", async () => {
+	it("total supply does not change with freezing an account and remains at 50 million", async () => {
 		let bb = await BLB.deployed();
 		let supply = await bb.totalSupply();
-		assert.equal(web3.utils.fromWei(supply, "ether"), "500000");
+		assert.equal(web3.utils.fromWei(supply, "ether"), "50000000");
 	});
 	it("ritika unfreezes jordan's account with 0.1 million inside", async () => {
 		let bb = await BLB.deployed();
